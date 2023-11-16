@@ -96,7 +96,7 @@ module.exports = {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
                 { $addToSet: { reactions: req.body } },
-                { runValidators, new: true }
+                { runValidators: true, new: true }
             );
             if (!thought) {
                 return res.status(404).json({ message: 'No thought found with this id!' });
